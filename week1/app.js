@@ -50,6 +50,8 @@ gradStudents[0].payRate = "$12.00/hour", gradStudents[1].payRate = "$14.00/hour"
 
 gradStudents.forEach(Element => console.log(Element))
 
+//My expectation was that nothing would change, but it did. Apparently you can modify a constant.
+
 
 
 const multipliers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
