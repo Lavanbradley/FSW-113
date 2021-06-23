@@ -85,3 +85,6 @@ console.log(car);
 
 let redAndGreen = cars.filter(car => car.color === "red" || car.color === "green");
 console.log(redAndGreen);
+
+let find = cars.find(cars.color === "yellow");
+console.log(find)
