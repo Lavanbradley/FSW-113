@@ -32,10 +32,17 @@ $(document).ready(function () {
       resultList.text("Performing search...");
 
       getData()
+      var setTimer = setTimeout(function(){
+        console.log(data, data.length)
+        var newData = data
+        console.log(newData.length, data.length)
+       displayResults(data)
+
+      }, 3000)
+
       console.log(data, data.length)
       var newData = data
       console.log(newData.length, data.length)
-       displayResults(data)
     }
 
     return false;
