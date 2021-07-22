@@ -1,14 +1,18 @@
 /* 
   index.js
 */
-$(document).ready(function() {
-  
+var h1 = document.getElementById('h1')
+h1.style.color = "Red"
+var spinner = document.querySelector('.loading')
+spinner.style.visibility = "hidden"
+$(document).ready(function () {
+
   "use strict";
   var resultList = $("#resultList");
   resultList.text("... Result");
 
   var toggleButton = $("#toggleButton");
-  toggleButton.on("click", function() {
+  toggleButton.on("click", function () {
     resultList.toggle(500);
 
     if (toggleButton.text() == "Hide") toggleButton.text("Show");
@@ -19,24 +23,26 @@ $(document).ready(function() {
   listItems.css("font-weight", "bold");
   listItems.filter(":first").css("font-size", "18px");
 
-  $("#starWarApiSearchForm").on("submit", function() {
+  $("#starWarApiSearchForm").on("submit", function () {
     debugger
     var peopleId = $("#peopleId").val();
 
     if (peopleId) {
 
       resultList.text("Performing search...");
+      
+      spinner.style.visibility = "visible"
 
       var starWarApiSearch = "https://swapi.dev/api/people/" + peopleId;
-      
+
       $.get(starWarApiSearch)
-        .success(function(r) {
+        .success(function (r) {
           displayResults(r);
         })
-        .fail(function(err) {
+        .fail(function (err) {
           console.log("Failed to query Star war API");
         })
-        .done(function() {
+        .done(function () {
           //
         });
     }
@@ -45,9 +51,10 @@ $(document).ready(function() {
   });
 
   function displayResults(results) {
-   
-    resultList.text(JSON.stringify(results));
 
+    resultList.text(JSON.stringify(results));
+    
+    spinner.style.visibility = "hidden"
 
   }
 
